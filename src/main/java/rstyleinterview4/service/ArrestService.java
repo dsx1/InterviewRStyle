@@ -11,4 +11,5 @@ public interface ArrestService {
     Arrest read(int arrestId);
     int update(int arrestId, String newPurpose, long newAmount, int newStatus);
     Arrest read(String refDocNumber);
+    void createTable();
 }

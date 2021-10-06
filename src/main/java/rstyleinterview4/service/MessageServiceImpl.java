@@ -22,6 +22,7 @@ public class MessageServiceImpl implements MessageService{
 
     @Override
     public String create(Message message) {
+        createTable();
         StringBuilder resultText=new StringBuilder();
         String messageResult = checkMessage(message);
         if (messageResult.equals("")){
@@ -32,19 +33,17 @@ public class MessageServiceImpl implements MessageService{
 
                         if (clientService.read(message.getLastName(),message.getFirstName(), message.getDocumentType(), message.getDocumentNumber())!=null){
                             jdbcTemplate.update("UPDATE client set arrests=array_append(arrests,?)", arrestId);
-                            resultText.append("ArrestId: " + arrestId);
-                            resultText.append(" ResultCode: " + 0);
                         }
                         else {
                             Client client = new Client(message.getLastName(), message.getFirstName(), message.getDocumentType(), message.getDocumentNumber(),message.getBirthDate(), message.getBirthPlace(), new Integer[]{arrestId});
                             clientService.create(client);
-                            resultText.append("ArrestId: " + arrestId);
-                            resultText.append(" ResultCode: " + 0);
                         }
+                        resultText.append("ArrestId: ").append(arrestId);
+                        resultText.append(" ResultCode: " + 0);
                     }
                     if (jdbcTemplate.update("INSERT INTO message VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",message.getRequestId(), message.getLastName(), message.getFirstName(), message.getDocumentType(), message.getDocumentNumber(), message.getIssueDate(), message.getOrganCode(), message.getArrestDocDate(), message.getArrestDocNumber(), message.getPurpose(), message.getAmount(), message.getArrestRefDocNumber(), message.getOperation())!=0)
                     {
-                        resultText.append("ArrestId: " + arrestId);
+                        resultText.append("ArrestId: ").append(arrestId);
                         resultText.append(" ResultCode: "+ 0);
                     }
                     break;
@@ -52,7 +51,7 @@ public class MessageServiceImpl implements MessageService{
                     Arrest arrestRefDoc = arrestService.read(message.getArrestRefDocNumber());
                     if(arrestRefDoc!=null){
                         if (arrestService.update(arrestRefDoc.getId(), message.getPurpose(), message.getAmount(), message.getOperation())!=0){
-                            resultText.append("ArrestId: " + arrestRefDoc.getId());
+                            resultText.append("ArrestId: ").append(arrestRefDoc.getId());
                             resultText.append(" ResultCode: " + 0);
                         }
                     }
@@ -60,13 +59,13 @@ public class MessageServiceImpl implements MessageService{
                     arrestRefDoc = arrestService.read(message.getArrestRefDocNumber());
                     if(arrestRefDoc!=null && message.getAmount()==0L){
                         if (arrestService.update(arrestRefDoc.getId(), message.getPurpose(), message.getAmount(), message.getOperation())!=0){
-                            resultText.append("ArrestId: " + arrestRefDoc.getId());
+                            resultText.append("ArrestId: ").append(arrestRefDoc.getId());
                             resultText.append(" ResultCode: " + 0);
                         }
                     }
                 default:
                     resultText.append("ResultCode: " + 5);
-                    resultText.append("ResultText: " + messageResult);
+                    resultText.append("ResultText: ").append(messageResult);
                     return resultText.toString();
             }
 
@@ -75,8 +74,6 @@ public class MessageServiceImpl implements MessageService{
         return resultText.toString();
 
     }
-
-
 
     @Override
     public String checkMessage(Message message){
@@ -115,5 +112,9 @@ public class MessageServiceImpl implements MessageService{
         return sb.toString();
     }
 
+    @Override
+    public void createTable() {
+        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS message (id serial, lastname varchar(100), firstname varchar(100), documenttype int, documentnumber text, issuedate date, organcode int, arrestdocdate date, arrestdocnumber varchar(30), purpose text, amount real, arrestrefdocnumber varchar(30), operation int)");
+    }
 
 }

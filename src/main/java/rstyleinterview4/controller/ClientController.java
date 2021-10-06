@@ -4,18 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rstyleinterview4.model.Client;
 import rstyleinterview4.service.ClientService;
 
-import javax.validation.Valid;
+
 import java.util.List;
 
-//@Controller
 @RestController
-//@RequestMapping("/clients")
 public class ClientController {
     private final ClientService clientService;
 
@@ -38,7 +35,7 @@ public class ClientController {
     }
 
 
-    @RequestMapping(value="/clients", method = RequestMethod.GET)
+    @RequestMapping(value="/client", method = RequestMethod.GET)
     public ResponseEntity<Client> read(@RequestParam("lastname") String lastName,@RequestParam("firstname") String firstName,@RequestParam("documenttype") int documentType,@RequestParam("documentnumber") String documentNumber){
         final Client gotClient = clientService.read(lastName,firstName,documentType,documentNumber);
         return gotClient!=null ? new ResponseEntity<>(gotClient, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);

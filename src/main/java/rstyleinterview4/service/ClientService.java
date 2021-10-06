@@ -7,7 +7,6 @@ import java.util.List;
 public interface ClientService {
     void create(Client client);
     List<Client> readAll();
-    Client read(Client client);
     Client read(String lastName, String firstName, int documentType, String documentNumber);
-
+    void createTable();
 }

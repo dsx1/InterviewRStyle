@@ -3,7 +3,6 @@ package rstyleinterview4.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.sql.Array;
 import java.util.Date;
 
 public class Client {
@@ -62,63 +61,32 @@ public class Client {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public int getDocumentType() {
         return documentType;
-    }
-
-    public void setDocumentType(int documentType) {
-        this.documentType = documentType;
     }
 
     public String getDocumentNumber() {
         return documentNumber;
     }
 
-    public void setDocumentNumber(String documentNumber) {
-        this.documentNumber = documentNumber;
-    }
-
     public Date getBirthDate() {
         return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
     }
 
     public String getBirthPlace() {
         return birthPlace;
     }
 
-    public void setBirthPlace(String birthPlace) {
-        this.birthPlace = birthPlace;
-    }
-
     public Integer[] getArrests() {
         return arrests;
     }
 
-    public void setArrests(Integer[] arrests) {
-        this.arrests = arrests;
-    }
 }

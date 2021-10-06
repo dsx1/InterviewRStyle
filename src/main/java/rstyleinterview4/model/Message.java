@@ -76,119 +76,62 @@ public class Message {
         return requestId;
     }
 
-    public void setRequestId(int requestId) {
-        this.requestId = requestId;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+
 
     public String getFirstName() {
         return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
     }
 
     public int getDocumentType() {
         return documentType;
     }
 
-    public void setDocumentType(int documentType) {
-        this.documentType = documentType;
-    }
-
     public String getDocumentNumber() {
         return documentNumber;
-    }
-
-    public void setDocumentNumber(String documentNumber) {
-        this.documentNumber = documentNumber;
     }
 
     public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public String getBirthPlace() {
         return birthPlace;
-    }
-
-    public void setBirthPlace(String birthPlace) {
-        this.birthPlace = birthPlace;
     }
 
     public Date getIssueDate() {
         return issueDate;
     }
 
-    public void setIssueDate(Date issueDate) {
-        this.issueDate = issueDate;
-    }
-
     public int getOrganCode() {
         return organCode;
-    }
-
-    public void setOrganCode(int organCode) {
-        this.organCode = organCode;
     }
 
     public Date getArrestDocDate() {
         return arrestDocDate;
     }
 
-    public void setArrestDocDate(Date arrestDocDate) {
-        this.arrestDocDate = arrestDocDate;
-    }
-
     public String getArrestDocNumber() {
         return arrestDocNumber;
-    }
-
-    public void setArrestDocNumber(String arrestDocNumber) {
-        this.arrestDocNumber = arrestDocNumber;
     }
 
     public String getPurpose() {
         return purpose;
     }
 
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
-    }
-
     public long getAmount() {
         return amount;
-    }
-
-    public void setAmount(long amount) {
-        this.amount = amount;
     }
 
     public String getArrestRefDocNumber() {
         return arrestRefDocNumber;
     }
 
-    public void setArrestRefDocNumber(String arrestRefDocNumber) {
-        this.arrestRefDocNumber = arrestRefDocNumber;
-    }
-
     public int getOperation() {
         return operation;
     }
 
-    public void setOperation(int operation) {
-        this.operation = operation;
-    }
 }

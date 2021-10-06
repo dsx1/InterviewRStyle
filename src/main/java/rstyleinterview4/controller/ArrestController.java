@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import rstyleinterview4.model.Arrest;
-import rstyleinterview4.model.Client;
 import rstyleinterview4.service.ArrestService;
 
 import java.util.List;
