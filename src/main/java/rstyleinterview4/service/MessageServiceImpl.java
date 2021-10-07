@@ -78,8 +78,8 @@ public class MessageServiceImpl implements MessageService{
     @Override
     public String checkMessage(Message message){
         StringBuilder sb = new StringBuilder();
-        if (message.getLastName().length()<100 && !message.getLastName().isEmpty()){
-            if (message.getFirstName().length()<100 && !message.getFirstName().isEmpty()){
+        if (message.getLastName().length()<100 && !message.getLastName().isEmpty() && message.getLastName().matches("[А-Я][а-яА-Я]*")){
+            if (message.getFirstName().length()<100 && !message.getFirstName().isEmpty() && message.getLastName().matches("[а-я][а-яА-Я]*")){
                 if (message.getDocumentType() == 1 || message.getDocumentType()==2){
 
                         if (message.getOrganCode() == 17 || message.getOrganCode()==39){
